@@ -1,0 +1,69 @@
+
+---
+
+# 2. Script: cluster-enumeration.sh
+
+```bash
+#!/bin/bash
+
+echo "===== Cluster Info ====="
+kubectl cluster-info
+
+echo "===== Nodes ====="
+kubectl get nodes -o wide
+
+echo "===== All Pods ====="
+kubectl get pods -A -o wide
+
+echo "===== Services ====="
+kubectl get svc -A
+
+echo "===== Namespaces ====="
+kubectl get ns
+
+echo "===== Network Policies ====="
+kubectl get networkpolicies -A
+
+echo "===== Secrets ====="
+kubectl get secrets -A
+
+echo "===== Roles ====="
+kubectl get roles -A
+
+echo "===== RoleBindings ====="
+kubectl get rolebindings -A
+
+# 3. Script: privileged-pod-check.sh
+
+#!/bin/bash
+
+echo "Checking privileged containers..."
+
+kubectl get pods -A -o json | jq -r '
+.items[] |
+.select(.spec.containers[].securityContext.privileged==true) |
+.metadata.namespace + "/" + .metadata.name'
+
+# 4. Script: secrets-audit.sh
+
+#!/bin/bash
+
+echo "Listing secrets..."
+
+kubectl get secrets -A
+
+echo "Checking secret permissions..."
+
+kubectl auth can-i get secrets --all-namespaces
+
+5. Script: rbac-audit.sh
+
+#!/bin/bash
+
+echo "Cluster Role Bindings"
+
+kubectl get clusterrolebindings
+
+echo "Roles with admin access"
+
+kubectl describe clusterrole cluster-admin
