@@ -1,0 +1,9 @@
+hardening-guide/kubernetes-hardening.md
+
+Include:
+
+• Disable privileged containers
+• Enable RBAC
+• Enable audit logs
+• Restrict API server
+• Encrypt secrets
