@@ -1,0 +1,55 @@
+Sample Pentest Report
+
+sample-reports/kubernetes-security-audit-report.md
+
+# Kubernetes Security Audit Report
+
+Client: Demo Environment  
+Date: Feb 2026  
+
+---
+
+# Findings
+
+## Critical
+
+Privileged containers detected
+
+Impact:
+Container escape possible
+
+Recommendation:
+Disable privileged mode
+
+---
+
+## High
+
+Secrets accessible to default service account
+
+Recommendation:
+Implement least privilege RBAC
+
+---
+
+## Medium
+
+No network policies
+
+Impact:
+Lateral movement possible
+
+---
+
+# Tools Used
+
+kubectl  
+kube-bench  
+kubescape  
+trivy  
+
+---
+
+# Overall Risk
+
+HIGH
