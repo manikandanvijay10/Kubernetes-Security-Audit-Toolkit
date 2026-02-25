@@ -1,0 +1,28 @@
+tool-installation-guide.md
+│# Kubernetes Security Tools Installation
+
+## kube-bench
+https://github.com/aquasecurity/kube-bench
+
+Run:
+kube-bench run
+
+---
+
+## kubescape
+
+Install:
+curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
+
+Run:
+kubescape scan framework nsa
+
+---
+
+## trivy
+
+Install:
+brew install trivy
+
+Run:
+trivy image nginx
